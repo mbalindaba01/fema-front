@@ -1,0 +1,687 @@
+@import url("https://fonts.googleapis.com/css?family=Karla|Quicksand");
+@import url("https://fonts.googleapis.com/css?family=Lobster|Quicksand");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
+
+ body {
+	font-family: "Karla", sans-serif;
+	padding: 20px;
+	color: #1e3e48;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+header {
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	font-family: "Lobster", sans-serif;
+}
+
+nav {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+
+
+div.nav-icons {
+	display: flex;
+	align-items: center;
+	width: 60px;
+	height: 100%;
+	justify-content: space-between;
+}
+
+i.fa-lg {
+	height: 50%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+div.logo {
+	font-size: 1.5em;
+}
+
+.err {
+	color: greenyellow;
+}
+label{
+  color: #fff;
+}
+.chooseService{
+  color: #fff;
+}
+
+
+.userLogoutBtn, .facilityLogoutBtn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: #3ab795;
+	border: none;
+	border-radius: 10px;
+	width: 170px;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: .5rem;
+	align-self: center;
+}
+
+.users {
+	display: flex;
+}
+
+div.user-screen {
+	display: flex;
+	background: #f6f6f4;
+	width: 100vw;
+	height: 100%;
+}
+
+div.facility-screen {
+	display: flex;
+	background: #f6f6f4;
+}
+
+div.landing {
+	height: 200px;
+	display: flex;
+	align-items: center;
+}
+
+div.landing p {
+	font-size: 2em;
+}
+
+div.service-info,
+div.dashboard {
+	width: 100%;
+	padding: 10px;
+}
+
+div.facility-list {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 40px;
+}
+
+.dots {
+	position: absolute;
+	right: 10px;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.edit-delete-menu {
+	position: absolute;
+	background: #3ab795;
+	right: 20px;
+	top: 20px;
+	z-index: 1000;
+}
+
+li {
+	list-style: none;
+	border: 1px solid #1E3E48;
+	padding: 10px;
+	cursor: pointer;
+}
+
+div.facility {
+	margin: 10px;
+	border-radius: 10px;
+	width: 200px;
+	height: 190px;
+	overflow: hidden;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+p.service-name {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 0;
+	right: 0;
+	background: url(./images/colorful-2174045_640.png);
+	color: #f6f6f4;
+	height: 30px;
+	width: 30px;
+	font-size: 1.5em;
+	border-radius: 20px 0px 10px 0px;
+}
+
+p.serv-2 {
+	top: 0;
+	border-radius: 0px 10px 0px 20px;
+
+}
+
+
+div.facility div.heading,
+h3.details, .overview-heading{
+	height: 50px;
+	display: flex;
+	align-items: center;
+	background: url(./images/hd-wallpaper-6047465_640.jpg);
+	justify-content: center;
+	border-radius: 10px 10px 0 0;
+	color: #eee;
+}
+
+.cancel {
+	height: 40px;
+	width: 40px;
+	background: #eee;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 1.5em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+div.details {
+	padding: 10px;
+	height: 100%;
+}
+
+div.details p {
+	font-size: 0.8em;
+}
+
+div.button {
+	margin-top: 10px;
+}
+
+div.button button {
+	height: 40px;
+	padding: 10px;
+	border-radius: 10px;
+	border: none;
+	outline: none;
+	color: #eee;
+	background: url(./images/colorful-2174045_640.png);
+}
+
+.booking-section {
+  height: 100%;
+  border-radius: 5px;
+  min-height: 95vh;
+  position: relative;
+  background: #1E3E48;
+  width: 80%;
+}
+
+
+
+button.add-booking {
+	background: url(./images/colorful-2174045_640.png);
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	color: #eee;
+	border: none;
+	outline: none;
+	height: 30px;
+	padding: 10px;
+	line-height: 10px;
+	border-radius: 10px;
+}
+
+
+
+section.booking-header {
+	height: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0 30px;
+	color: #eee;
+}
+
+hr {
+	border: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+	position: absolute;
+	top: 70px;
+	width: 250px;
+}
+
+hr.facility-divider {
+	border-bottom: 1px solid #1e3e48;
+	position: relative;
+	top: 0;
+	width: 95%;
+}
+
+div.overview {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+div.overview-content {
+	width: 100%;
+	display: flex;
+	height: 300px;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+div.overview-content > * {
+	width: 45%;
+	height: 80%;
+	min-width: 250px;
+	min-height: 250px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div.text {
+	height: 100%;
+	max-height: 200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+p.info {
+	height: 70px;
+	display: block;
+	width: 250px;
+	background: url(./images/colorful-2174045_640.png);
+	color: #f6f6f4;
+	border-radius: 5px;
+	padding: 5px;
+	text-align: center;
+}
+
+canvas {
+	margin-top: 20px;
+}
+
+section.bookings {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+	max-width: 100%;
+}
+
+div.booking {
+	border-radius: 10px;
+	padding: 5px;
+	height: 140px;
+	width: 200px;
+	margin: 10px;
+	background: white;
+	position: relative;
+}
+
+button,
+div.nav-icons i {
+	cursor: pointer;
+}
+
+div.name-and-address {
+	border-left: 3px solid crimson;
+	padding-left: 5px;
+}
+
+h3.facility-name {
+	font-size: 1em;
+}
+
+p.address,
+p.email-address {
+	font-size: 0.8em;
+}
+
+h5.date {
+	font-size: 0.8em;
+}
+
+p.date {
+	font-size: 0.8em;
+}
+
+div.date-and-time {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px 0px 8px 10px;
+	bottom: 40px;
+	font-size: 1em;
+	position: absolute;
+	bottom: 35px;
+}
+
+div.date-and-time > * {
+	padding: 0 20px 0 0;
+}
+
+div.date-and-time:nth-child(2){
+	padding-right: 0;
+}
+
+
+div.booking-status {
+	position: absolute;
+	width: 80px;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+	background: orange;
+	border-radius: 10px;
+	font-size: 0.8em;
+	bottom: 10px;
+}
+
+button.confirm-booking,
+button.reject-booking {
+	height: 25px;
+	border-radius: 10px;
+	width: 80px;
+	border: none;
+	color: #eee;
+}
+
+button.confirm-booking {
+	background: #3ab795;
+}
+
+button.reject-booking {
+	background: #c1292e;
+}
+
+.status-buttons {
+	height: 40px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 10px;
+	align-items: center;
+	position: absolute;
+	bottom: 5px;
+	width: 100%;
+}
+
+
+.contentBox {
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+}
+.formBox {
+	position: relative;
+	background: #1e3e48;
+	width: 40%;
+  	height: 100%;
+	min-height: 80vh;
+  	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.access-heading {
+	height: 10vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #eee;
+	text-decoration: underline;
+}
+
+form {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+input,
+button[type="button"], select#province {
+	width: 400px;
+	height: 10vh;
+	text-align: center;
+	background: none;
+	border: none;
+	outline: none;
+	border-bottom: 1px solid black;
+	font-size: 1.2em;
+	color: #eee;
+}
+
+select#province {
+	background: #1E3E48;
+}
+
+button[type="button"] {
+	background: #3ab795;
+	border: none;
+	border-radius: 10px;
+	height: 40px;
+	width: 300px;
+	align-self: center;
+	margin: 40px 0;
+}
+
+form.updateForm {
+	background: #1E3E48;
+	box-shadow: 5px 10px;
+	min-height: 400px;
+}
+
+input[type="checkbox"] {
+  width: 5%;
+}
+
+::placeholder {
+	color: #aaa;
+	font-weight: 100;
+	letter-spacing: 1px;
+}
+
+p.no-account {
+	color: #eee;
+}
+
+p.no-account a {
+	color: #3ab795;
+}
+
+.fac {
+	height: 85vh;
+}
+
+form.fac-reg-form input{
+  height: 5vh;
+}
+
+button.add-booking.two {
+  position: relative;
+  margin-top: -200px;
+  margin-left: 20px;
+}
+
+.box {
+  height: 50px;
+  width: 50px;
+}
+
+/* filter section */
+
+.outer-border {
+    position: relative;
+    height: 10vh;
+    width: 100%;
+    background: rgba(30, 62, 72, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    z-index: 2;
+	overflow: hidden;
+	margin-top: 20px;
+	margin-bottom: -20px;
+}
+
+.filter {
+    position: relative;
+    display: flex;
+    height: 80%;
+    width: 98%;
+	background-color: #1E3E48;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 50px;
+    z-index: 10;
+	overflow: hidden;
+}
+
+div.col-3 {
+    padding: 0 2rem;
+}
+
+select {
+    height: 2rem;
+    background: none;
+    border: none;
+    color: #eee;
+    font-size: 1rem;
+    background: #1E3E48;
+}
+
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+}
+
+button.filter-button {
+	background: url(./images/colorful-2174045_640.png);
+	width: 150px;
+	height: 40px;
+}
+
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        padding: 0;
+        overflow:hidden;
+    }
+}
+
+.bookingFeedback {
+	color: yellowgreen;
+	position: absolute;
+	top: 80px;
+}
+
+
+
+@media only screen and (max-width: 769px) {
+
+	div.user-screen {
+		width: 100%;
+		flex-direction: column-reverse;
+		height: 100%;
+	}
+
+	div.landing {
+		height: 120px;
+	}
+
+	div.landing p {
+		font-size: 1.2em;
+	}
+
+	div.facility {
+		width: 350px;
+		height: 220px;
+	}
+
+	.booking-section{
+		width: 100%;
+		height: 100%;
+	}
+
+	section.bookings {
+		height: 100%;
+	}
+
+	div.booking {
+		width: 350px;
+		padding: 10px;
+	}
+
+	h3.facility-name {
+		font-size: 1.2em;
+	}
+
+	p.address, p.email-address {
+		font-size: 1em;
+	}
+
+	h5.date, p.date, h5.time, p.time, p.status{
+		font-size: 1em;
+	}
+
+	.contentBox {
+		background: red;
+		width: 100%;
+	}
+
+	.formBox {
+		width: 100%;
+		height: 100%;
+	}
+
+	input {
+		width: 300px;
+	}
+
+	button[type="button"]{
+		margin: 40px 0;
+	}
+
+	div.details p {
+		font-size: 1.2em;
+	}
+
+	.facility-screen {
+		flex-direction: column-reverse;
+	}
+
+	div.overview-content {
+		height: 100%;
+		flex-direction: column;
+	}
+
+	div.overview-content > * {
+		height: 280px;
+	}
+  } 
+
+
+
+

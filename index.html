@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite App</title>
+	</head>
+
+	<body>
+		<header>
+			<nav>
+				<div class="logo">
+					<h1>Fema</h1>
+				</div>
+				<div class="nav-icons">
+					<i class="fa fa-lg fa-bell"></i>
+					<i class="fa fa-lg fa-sign-out"></i>
+				</div>
+			</nav>
+		</header>
+		<!-- forms for user login and access -->
+		<div x-data="users" class="users">
+			<section class="user-access" x-show="userAccess">
+				<section class="login" x-show="loggedIn">
+					<div class="contentBox">
+						<div class="formBox">
+							<h3 class="access-heading">Login As Individual</h3>
+							<form class="login-form">
+								<input
+								type="text"
+								x-model="user.loginEmail"
+								placeholder="Please enter email"
+								/>
+								<input
+								type="password"
+								x-model="user.loginPassword"
+								placeholder="Please enter password"
+								/>
+								<button type="button" @click="login();getCurrentUser()" value="user.loginEmail">Login</button>
+								<p class="no-account">
+								Don't have an account?
+								<a href="#" @click="signedUp=!signedUp, loggedIn=false">Register</a>
+								</p>
+							</form>
+						</div>
+          			</div>
+				</section>
+				<section class="register" x-show="!signedUp">
+					<div class="contentBox">
+						<div class="formBox">
+							<div class="err" x-text="signUpAuthError"></div>
+							<h3 class="access-heading">Register As Individual</h3>
+							<form class="reg-form">
+								<input
+									type="text"
+									x-model="user.name"
+									placeholder="Please enter full name"
+								/>
+								<input
+									type="text"
+									x-model="user.email"
+									placeholder="Please enter email"
+								/>
+								<input
+									type="password"
+									x-model="user.password"
+									placeholder="Please enter password"
+								/>
+								<button type="button" @click="register()">Register</button>
+								<p class="no-account">
+									<a href="#" @click="signedUp=!signedUp, loggedIn=true"
+										>Login</a
+									>
+								</p>
+								<p class="no-account">
+									Login Or Register A Facility
+									<a href="#" @click="showFacSec=!showFacSec, userAccess=false"
+										>Here</a
+									>
+								</p>
+							</form>
+						</div>
+					</div>
+				</section>
+			</section>
+
+			<!-- forms for facility login and register -->
+			<section class="facility-access" x-show="!showFacSec">
+				<section class="login" x-show="facilityLoggedIn">
+					<div class="contentBox">
+						<div class="formBox">
+							<div class="err" x-text="logFacAuthError"></div>
+
+							<h3 class="access-heading">Login As An organisation</h3>
+							<form class="login-form">
+								<input
+									type="text"
+									x-model="facility.logFacEmail"
+									placeholder="Please enter email"
+								/>
+								<input
+									type="password"
+									x-model="facility.logFacPassword"
+									placeholder="Please enter password"
+								/>
+								<button type="button" @click="loginFacility()">Login</button>
+								<p class="no-account">
+									No Account?
+									<a
+										href="#"
+										@click="facilitySignedUp=!facilitySignedUp, facilityLoggedIn=false"
+										>Register</a
+									>
+								</p>
+								<p class="no-account">
+									Login as Individual
+									<a href="#" @click="showFacSec=false, userAccess=true"
+										>Here</a
+									>
+								</p>
+							</form>
+						</div>
+					</div>
+				</section>
+				<section class="register" x-show="!facilitySignedUp">
+					<div class="contentBox">
+						<div class="formBox">
+							<div class="err" x-text="facAuthError"></div>
+
+							<h3 class="access-heading">Register An Organisation</h3>
+							<form class="reg-form">
+								<input
+									type="text"
+									x-model="facility.facName"
+									placeholder="Name of organisation/company"
+								/>
+								<input
+									type="text"
+									x-model="facility.facEmail"
+									placeholder="Email"
+								/>
+								<input
+									type="text"
+									x-model="facility.contactno"
+									id="contactno"
+									placeholder="Contact number"
+								/>
+								<input
+									type="text"
+									x-model="facility.city"
+									id="city"
+									placeholder="City"
+								/>
+								<select name="province" id="province" x-model="facility.province">
+									<option value="Choose Province" selected>Choose Province</option>
+									<option value="KwaZulu Natal">KwaZulu Natal</option>
+									<option value="Gauteng">Gauteng</option>
+									<option value="Limpopo">Limpopo</option>
+									<option value="Mpumalanga">Mpumalanga</option>
+									<option value="North West">North West</option>
+									<option value="Western Cape">Western Cape</option>
+									<option value="Eastern Cape">Eastern Cape</option>
+									<option value="Northern Cape">Northern Cape</option>
+									<option value="Free State">Free State</option>
+								</select>
+								<input
+									type="text"
+									x-model="facility.reg"
+									id="reg"
+									placeholder="Organisation registration code"
+								/>
+								<input
+									type="text"
+									x-model="facility.capacity"
+									id="capacity"
+									placeholder="Number of people you are able to see in a day"
+								/>
+								<input
+									type="password"
+									x-model="facility.facPassword"
+									placeholder="Please enter password"
+								/>
+								<h3 class="chooseService">Choose Service Offered</h3>
+								<input
+									type="checkbox"
+									id="PregnancyTermination"
+									x-model="facility.services"
+									value="1"
+								/>
+								<label for="chooseService"> Pregnancy termination</label>
+
+								<input
+									type="checkbox"
+									id="Contraception"
+									x-model="facility.services"
+									value="2"
+								/>
+								<label for="chooseService"> Contraception</label>
+
+								<input
+									type="checkbox"
+									id="PreNatalCare"
+									x-model="facility.services"
+									value="3"
+								/>
+								<label for="chooseService"> Pre-natal Care</label>
+								<br />
+								<br />
+								<button type="button" @click="registerFacility()">
+									Register
+								</button>
+								<p class="no-account">
+									<a href="#" @click="facilitySignedUp=!facilitySignedUp, facilityLoggedIn=true"
+										>Login</a
+									>
+								</p>
+								<p class="no-account">
+									Login as Individual
+									<a href="#" @click="showFacSec=false, userAccess=true"
+										>Here</a>
+								</p>
+							</form>
+						</div>
+					</div>
+				</section>
+			</section>
+      
+
+    <!-- user screen on login -->
+			<div class="user-screen" x-data="services" x-show="showUserScreen">
+			<div class="service-info" x-show="showAllElems">
+				<div class="landing" x-show="showAllElems">
+				<p>Get all the certified and safe service providers for all your lady needs in one place. Make a booking from the comfort of your home</p>
+				</div>
+				<hr class="facility-divider">
+				<div class="outer-border">
+					<div class="filter">
+						<div class="col-3">
+							<select id="services" class="inline-block" x-model="filterService">
+									<option class="" id="" value="all" selected >Choose service</option>
+									<template x-for="service in allServices">
+										<option class="" x-bind:value="service.serv_config_id" x-text="service.name"></option>
+									</template>
+							</select>
+						</div>
+						<div class="col-3">
+							<select name="provinces" id="provinces" x-model="filterProvince">
+								<option class="" id="" value="all" selected >Choose Province</option>
+								<option value="KwaZulu Natal">KwaZulu Natal</option>
+								<option value="Gauteng">Gauteng</option>
+								<option value="Limpopo">Limpopo</option>
+								<option value="Mpumalanga">Mpumalanga</option>
+								<option value="North West">North West</option>
+								<option value="Western Cape">Western Cape</option>
+								<option value="Eastern Cape">Eastern Cape</option>
+								<option value="Northern Cape">Northern Cape</option>
+								<option value="Free State">Free State</option>
+							</select>
+						</div>
+						<div class="col-3">
+							<button type="button" class="filter-button" @click="callFacilityFunction()">Filter</button>
+						</div>
+					</div>
+				</div>
+				<div class="facility-list" x-init="callFacilityFunction()" x-show="showAllElems">
+				<template x-for="facility in facilities">
+					<div class="facility">
+						<div class="heading">
+							<h3 class="facility-name" x-text="facility.facility_name"></h3>
+						</div>
+						<div class="details">
+							<p x-text="facility.city + ', ' + facility.province"></p>
+							<p x-text="facility.facility_contacno"></p>
+							<p x-text="facility.facility_email"></p>
+							<p x-text="facility.facility_reg"></p>
+							<button x-bind:id="facility.facility_name" class="add-booking two" @click="makeBooking(); getCurrentFacility($event);getServices()">Make booking</button>
+						</div>
+					</div>
+				</template>
+				</div>
+			</div>
+
+			<!-- form for making booking -->
+
+			<section class="user-access" x-show="isbooking">
+						<section class="login">
+							<div class="err" x-text="loginAuthError"></div>
+							<div class="contentBox">
+					<div class="formBox">
+					<div class="cancel" @click="cancelBookingForm()">X</div>
+					<h3 class="access-heading">Make booking</h3>
+					<form>
+						<select id="facility-services" x-model="chosenService">
+						<option value="value" selected>Choose Service</option>
+						<template x-for="service in serviceList">
+							<option x-bind:value="service.serv_config_id" x-text="service.name"></option>
+						</template>
+						</select>
+						<label for="birthday">Select a date: </label>
+						<input type="date" id="booking-date" name="booking-date" x-model="bookingDate">
+						<label for="appt">Select a time:</label>
+						<input type="time" id="booking-time" name="booking-time" x-model="bookingTime">
+						<button type="button" @click="saveBooking()">Submit</button>
+					</form>
+					</div>
+				</div>
+					</section>
+			</section>
+
+			<div class="booking-section" x-show="showAllElems">
+				<section class="booking-header">
+					<p>Here are your upcoming bookings</p>
+					<hr>
+					</section>
+				<section class="bookings">
+					<p class="bookingFeedback" x-text="bookingFeedback"></p>
+					<div class="edit-delete-menu" x-show="isCheckingDetails">
+						<ul>
+							<li x-show="nextStep" @click="deleteConfirmation()">Delete Booking</li>
+							<li x-show="nextStep" @click="editConfirmation()">Edit Booking</li>
+						</ul>
+						<div class="delete" x-show="isDeletingBooking">
+							<p>Are you sure you want to delete the booking?</p>
+							<button @click="deleteBooking()">Delete</button>
+						</div>
+						<div class="edit" x-show="isEditingBooking">
+							<form class="updateForm">
+								<div class="cancel" @click="cancelUpdateBookingForm()">X</div>
+								<select id="facility-services" x-model="updateService">
+									<option value="value" selected>Choose Service</option>
+									<template x-for="service in serviceList">
+										<option x-bind:value="service.serv_config_id" x-text="service.name"></option>
+									</template>
+									</select>
+									<label for="birthday">Select a date: </label>
+									<input type="date" id="booking-date" name="booking-date" x-model="updateBookingDate">
+									<label for="appt">Select a time:</label>
+									<input type="time" id="booking-time" name="booking-time" x-model="updateBookingTime">
+									<button type="button" @click="updateBooking(); saveUpdatedBooking()">Submit</button>
+							</form>
+						</div>
+					</div>
+					<template x-for="booking in userBookingList">
+						<div class="booking">
+							<i class="dots fa fa-ellipsis-v" x-bind:id="booking.booking_id" x-bind:data-facility="booking.facility_name" x-bind:value="booking.facility_name" @click="isCheckingDetails = !isCheckingDetails; getBookingId($event); getUpdateFacility($event); getServices()"></i>
+							<div class="name-and-address">
+								<h3 class="facility-name" x-text="booking.facility_name"></h3>
+								<p class="address" x-text="booking.city + ', ' + booking.province"></p>
+							</div>
+							<div class="date-and-time">
+								<div class="date-group">
+								<h5 class="date">Date</h5>
+								<p class="date" x-text="booking.booking_date.split('T')[0]"></p>
+								</div>
+								<div class="time-group">
+								<h5 class="time">Time</h5>
+								<p class="time" x-text="booking.booking_time.split(':').slice(0, 2).join(':')"></p>
+								</div>
+							</div>
+							<div class="booking-status">
+								<i class="fa fa-clock-o"></i>
+								<p class="status" x-text="booking.booking_status"></p>
+							</div>
+							<p class="service-name" x-text="booking.name.split('').slice(0, 1).join('').toUpperCase()"></p>
+						</div>
+					</template>
+				</section>
+			</div>
+			</div>
+
+		<!-- facility-screen -->
+			<div class="facility-screen" x-show="showFacilityScreen">
+				<div class="dashboard">
+					<div class="landing">
+						<p>Get users approach you as a service provider online at the comfort of their own home. Also get insights on which services are most sought by your customers.</p>
+					</div>
+					<hr class="facility-divider">
+					<div class="overview">
+						<div class="overview-content">
+						<div class="upcoming-week">
+							<h3 class="overview-heading">Upcoming week</h3>
+							<div class="text">
+							<p class="info one">You have four outstanding bookings. Please confirm or reject as soon as possible</p>
+							<p class="info two">Please keep the information about services offered updated</p>
+							</div>              
+						</div>
+						<div class="monthly-stats">
+							<h3 class="overview-heading">Service distribution</h3>
+							<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="booking-section">
+					<button class="add-booking">Manage Bookings</button>
+					<section class="booking-header">
+						<p>These are your upcoming bookings</p>
+						<hr>
+					</section>
+					<section class="bookings" id="facility-bookings">
+						<p class="bookingFeedback" x-text="bookingFeedback"></p>
+						<template x-for="booking in facilityBookingList">
+							<div class="booking">
+								<div class="name-and-address">
+									<h3 class="customer-name" x-text="booking.full_name"></h3>
+									<p class="email-address" x-text="booking.email"></p>
+								</div>
+								<div class="date-and-time">
+									<div class="date-group">
+									<h5 class="date">Date</h5>
+									<p class="date" x-text="booking.booking_date.split('T')[0]"></p>
+									</div>
+									<div class="time-group">
+									<h5 class="time">Time</h5>
+									<p class="time" x-text="booking.booking_time.split(':').slice(0, 2).join(':')"></p>
+									</div>
+								</div>
+								<p class="service-name serv-2" x-text="booking.name.split('').slice(0, 1).join('').toUpperCase()"></p>
+								<div class="status-buttons">
+									<button x-bind:id="booking.booking_id" class="confirm-booking" value="confirmed" @click="getBookingStatus($event); getBookingId($event); changeBookingStatus()">Confirm</button>
+									<button x-bind:id="booking.booking_id" class="reject-booking" value="rejected" @click="getBookingStatus($event); getBookingId($event); changeBookingStatus()">Reject</button>
+								</div>
+							</div>
+						</template>
+					</section>
+				</div>
+			</div>
+		</div>
+		<script type="module" src="/chart.js"></script>
+		<script type="module" src="/main.js"></script>
+		<script src="https://use.fontawesome.com/7e5be8745d.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+	</body>
+</html>
